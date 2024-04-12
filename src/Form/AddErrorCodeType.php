@@ -16,7 +16,6 @@ class AddErrorCodeType extends AbstractType
             ->add('http_code')
             ->add('tag')
             ->add('message')
-            ->add('envoyer', SubmitType::class)
         ;
     }
 

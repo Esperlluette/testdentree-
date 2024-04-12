@@ -5,20 +5,87 @@
 
 {% block body %}
 	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
+		.header {
+			animation: fadeIn;
+			animation-duration: 2s;
+			opacity: 1;
+
+			font-family: 'Roboto', sans-serif;
+
+			margin-bottom : 1em;
+			margin-left: 35em;
+			margin-right: 35em;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-top: 5em;
+			background: #6ED1F0;
+			padding: 1em;
+			border-radius: 8px;
+		}
+
+
+		@keyframes fadeIn {
+			0% {
+				opacity: 0;
+			} /* Element starts fully transparent */
+			50% {
+				opacity: 0.5;
+			} /* Element is halfway opaque at 50% */
+			100% {
+				opacity: 1;
+			}; /* Element is fully opaque at the end */
+		}
+
+
+		.buttons {
+			display: flex;
+			justify-content: center;
+			gap: 0.5em; /* Set custom gap between buttons */
+		}
+
+
+		.button {
+
+			background: linear-gradient(to right, #F25B24, #FF851B);
+
+			background-color: #FCFCFD;
+			border-radius: 4px;
+			border-width: 0;
+			box-shadow: rgba(45, 35, 66, 0.2) 0 2px 4px, rgba(45, 35, 66, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+			color: #36395A;
+			font-family: "JetBrains Mono", monospace;
+			height: 48px;
+			padding-left: 16px;
+			padding-right: 16px;
+			transition: box-shadow 0.15s, transform 0.15s;
+			font-size: 18px;
+		}
+
+		.button:focus {
+			box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+		}
+
+		.button:hover {
+			box-shadow: rgba(45, 35, 66, 0.3) 0 4px 8px, rgba(45, 35, 66, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+			transform: translateY(-2px);
+		}
+
+		.button:active {
+			box-shadow: #D6D6E7 0 3px 7px inset;
+			transform: translateY(2px);
 		}
 	</style>
-	<div class="example-wrapper">
-		<h1>
-			Les excuses de dev
-		</h1>
-		<button type="button" id="random" onclick="window.location.href='{{path('app_error')}}?http_code={{random(codes)}}'">Randomize code</button>
-		<button type="button" id="home" onclick="window.location.href='{{path('app_home')}}'">To home</button>
-		<button type="button" id="add" onclick="window.location.href='{{path('app_add_code')}}'">Add code</button>
+
+	<div class="header">
+		<h1>Excuses de dev</h1>
 	</div>
+	<div class="buttons">
+		<button type="button" class="button" id="random" onclick="window.location.href='{{path('app_error')}}?http_code={{random(codes)}}'">Randomize code</button>
+		<button type="button" class="button" id="home" onclick="window.location.href='{{path('app_home')}}'">To home</button>
+		<button type="button" class="button" id="add" onclick="window.location.href='{{path('app_add_code')}}'">Add code</button>
+	</div>
+
 
 {% endblock %}

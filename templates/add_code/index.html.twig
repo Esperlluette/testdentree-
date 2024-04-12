@@ -5,8 +5,38 @@
 
 {% block body %}
 
+	<style>
+		.body {
+			background:#000;
+		}
+		.form {
+			display: grid;
+			justify-content: center;
+			align-items: center;
 
-	{{form(form)}}
+		}
+	</style>
 
-		<button type="button" id="home" onclick="window.location.href='{{path('app_home')}}'">To home</button>
-	{% endblock %}
+	<div class="form">
+		<h1>Ajouter un code HTTP</h1><br>
+		{{form_start(form)}}
+		<br>
+
+		{{ form_label(form.http_code, 'Code HTTP', {label_attr: {style: ''}}) }}
+		<br>
+		{{ form_widget(form.http_code, {attr: {placeholder: 'Code', autofocus: 'autofocus', autocomplete: '', style: ''}}) }}
+		<br>
+
+		{{ form_label(form.tag, 'Tag', {label_attr: {style: ''}}) }}<br>
+		{{ form_widget(form.tag, {attr: {placeholder: 'Email', autofocus: 'autofocus', autocomplete: '', style: ''}}) }}<br>
+
+		{{ form_label(form.message, 'Message', {label_attr: {style: ''}}) }}<br>
+		{{ form_widget(form.message, {attr: {placeholder: 'Email', autofocus: 'autofocus', autocomplete: '', style: ''}}) }}<br>
+
+		<button type="submit" class="btn btn-primary">Register</button>
+		{{ form_end(form) }}
+	</div>
+	<button class"text-3xl text-red-500  font-bold underline" type="button" onclick="window.location.href='{{path('app_home')}}'">To home</button>
+
+
+{% endblock %}
