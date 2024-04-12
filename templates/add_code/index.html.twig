@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AddCodeController!
+{% endblock %}
+
+{% block body %}
+
+
+	{{form(form)}}
+
+		<button type="button" id="home" onclick="window.location.href='{{path('app_home')}}'">To home</button>
+	{% endblock %}

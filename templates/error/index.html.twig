@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ErrorController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+	</style>
+
+	<div class="example-wrapper">
+
+
+		{% if  output_message|length == 1  %}
+			<h1>
+				{{output_message[0]}}</h1>
+		{% elseif output_message is not empty %}
+
+			<h1>
+				Code
+				{{output_message[0]}}:
+				{{output_message[2]}}</h1>
+		{% else %}
+			<h1>La base de données est vide</h1>
+
+
+		{% endif %}
+
+
+		<button type="button" id="random" onclick="window.location.href='{{path('app_error')}}?http_code={{random(codes)}}'">Randomize code</button>
+		<button type="button" id="home" onclick="window.location.href='{{path('app_home')}}'">To home</button>
+		<button type="button" id="add" onclick="window.location.href='{{path('app_add_code')}}'">Add code</button>
+
+	</div>
+{% endblock %}
